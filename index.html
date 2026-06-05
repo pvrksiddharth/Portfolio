@@ -88,13 +88,22 @@
     .hero-title {
       font-family: 'Manrope', sans-serif;
       font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 800; line-height: 0.95; letter-spacing: -0.03em;
-      margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both;
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+
+      display: flex;
+      gap: 0.25em;
+      flex-wrap: wrap;
     }
     .hero-title .line2 {
-      display: block;
+      display: inline;
       background: linear-gradient(90deg, var(--accent1), var(--accent3));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .hero-subtitle {
       font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase;
@@ -262,8 +271,7 @@
     <div class="hero-badge"><span></span>Strategic Bids • AI • Digital Transformation</div>
     <p class="hero-subtitle">Pre-Sales | Bid Management | AI | Cloud | Cybersecurity</p>
     <h1 class="hero-title">
-      Siddharth<br>
-      <span class="line2">Pendyala.</span>
+        Siddharth <span class="line2">Pendyala</span>
     </h1>
     <p class="hero-desc">
       Supporting strategic bids and proposal development across Government, PSU and Enterprise opportunities. Experience in compliance management, bid coordination, solution positioning and emerging technology domains including AI, Cloud and Cybersecurity.
