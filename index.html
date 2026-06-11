@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Siddharth Pendyala | Pre-Sales & Bid Management</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #060a10;
@@ -14,632 +17,1677 @@
       --accent3: #5b8cff;
       --text: #e8edf5;
       --muted: #7a8ba0;
-      --border: rgba(255,255,255,0.07);
+      --border: rgba(255, 255, 255, 0.07);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    footer p {
+      text-align: center;
+    }
+
     body::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 999; opacity: 0.4;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
     }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1.2rem 4rem;
-      background: rgba(6,10,16,0.85); backdrop-filter: blur(16px);
+      background: rgba(6, 10, 16, 0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--accent1); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent1); }
+
+    .nav-logo {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      color: var(--accent1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent1);
+    }
 
     /* HERO */
     #hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 8rem 4rem 4rem; position: relative; overflow: hidden;
-    }
-    .hero-bg-circle { position: absolute; border-radius: 50%; filter: blur(220px); opacity: 0.22; pointer-events: none; }
-    .hbc1 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(0,245,196,0.12) 0%, transparent 70%);
-  top: -100px;
-  right: -100px;
-  animation: floatA 9s ease-in-out infinite;
-}
-
-.hbc2 {
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(120,120,120,0.08) 0%, transparent 70%);
-  bottom: 0;
-  left: 100px;
-  animation: floatB 11s ease-in-out infinite;
-}
-
-.hbc3 {
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(91,140,255,0.1) 0%, transparent 70%);
-  top: 40%;
-  left: 40%;
-  animation: floatC 13s ease-in-out infinite;
-}
-    @keyframes floatA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,40px)} }
-    @keyframes floatB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
-    @keyframes floatC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
-
-    .hero-content { position: relative; z-index: 2; max-width: 1200px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 1rem; border: 1px solid var(--accent1); border-radius: 100px;
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent1);
-      margin-bottom: 2rem; animation: fadeUp 0.6s ease both;
-    }
-    .hero-badge span { width: 6px; height: 6px; background: var(--accent1); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    .hero-title {
-      font-family: 'Manrope', sans-serif;
-      font-size: clamp(2.6rem, 4.5vw, 4.5rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.6s 0.1s ease both;
-
+      min-height: 100vh;
       display: flex;
-      gap: 0.25em;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(220px);
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .hbc1 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0, 245, 196, 0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: floatA 9s ease-in-out infinite;
+    }
+
+    .hbc2 {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(120, 120, 120, 0.08) 0%, transparent 70%);
+      bottom: 0;
+      left: 100px;
+      animation: floatB 11s ease-in-out infinite;
+    }
+
+    .hbc3 {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(91, 140, 255, 0.1) 0%, transparent 70%);
+      top: 40%;
+      left: 40%;
+      animation: floatC 13s ease-in-out infinite;
+    }
+
+    @keyframes floatA {
+
+      0%,
+      100% {
+        transform: translate(0, 0)
+      }
+
+      50% {
+        transform: translate(-30px, 40px)
+      }
+    }
+
+    @keyframes floatB {
+
+      0%,
+      100% {
+        transform: translate(0, 0)
+      }
+
+      50% {
+        transform: translate(40px, -30px)
+      }
+    }
+
+    @keyframes floatC {
+
+      0%,
+      100% {
+        transform: translate(0, 0)
+      }
+
+      50% {
+        transform: translate(-20px, 20px)
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-visual {
+      flex: 0.8;
+      height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* NETWORK VISUAL */
+    .network-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    #network-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .central-sphere {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(0, 245, 196, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(30px);
+      animation: spherePulse 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .central-sphere::after {
+      content: '';
+      position: absolute;
+      inset: 25%;
+      background: rgba(91, 140, 255, 0.2);
+      filter: blur(40px);
+      border-radius: 50%;
+    }
+
+    @keyframes spherePulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: 0.6;
+      }
+    }
+
+    .network-node {
+      position: absolute;
+      padding: 0.5rem 1rem;
+      background: rgba(13, 20, 33, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: default;
+      user-select: none;
+      animation: floatNode var(--dur) ease-in-out infinite alternate;
+    }
+
+    .network-node:hover {
+      border-color: var(--accent1);
+      background: rgba(0, 245, 196, 0.05);
+      box-shadow: 0 0 30px rgba(0, 245, 196, 0.15);
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    @keyframes floatNode {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(var(--tx), var(--ty));
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--accent1);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge span {
+      width: 6px;
+      height: 6px;
+      background: var(--accent1);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    .dune-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: normal;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .dune-line {
+      display: flex;
       flex-wrap: wrap;
     }
-    .hero-title .line2 {
-      display: inline;
-      background: linear-gradient(90deg, var(--accent1), var(--accent3));
+
+    .dune-line span {
+      display: inline-block;
+      margin-right: 0.35em;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: default;
+      user-select: none;
+    }
+
+    .dune-line span:last-child {
+      margin-right: 0;
+    }
+
+    /* White glow for Siddharth */
+    .dune-first span {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+    }
+
+    .dune-first span:hover {
+      color: #ffffff;
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.7);
+      transform: translateY(-4px) scale(1.15);
+    }
+
+    /* Cyan gradient for Pendyala */
+    .dune-last span {
+      background: linear-gradient(135deg, #00f5c4, #00d2ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      filter: drop-shadow(0 0 6px rgba(0, 245, 196, 0.35));
     }
+
+    .dune-last span:hover {
+      filter: drop-shadow(0 0 15px rgba(0, 245, 196, 0.95)) drop-shadow(0 0 5px rgba(0, 210, 255, 0.8));
+      transform: translateY(-4px) scale(1.15);
+    }
+
     .hero-subtitle {
-      font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.25rem;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
       animation: fadeUp 0.6s 0.15s ease both;
     }
-      .hero-desc {
+
+    .hero-desc {
       font-size: 1rem;
       line-height: 1.7;
       color: var(--muted);
-      max-width: 1000px;
+      max-width: 600px;
       margin-bottom: 2.5rem;
     }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; animation: fadeUp 0.6s 0.3s ease both; }
-    .tag { padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; }
-    .tag-ai { background: rgba(0,245,196,0.1); color: var(--accent1); border: 1px solid rgba(0,245,196,0.25); }
-    .tag-cyber { background: rgba(120,120,120,0.08); color: var(--accent2); border: 1px solid rgba(255,61,110,0.25); }
-    .tag-cloud { background: rgba(91,140,255,0.1); color: var(--accent3); border: 1px solid rgba(91,140,255,0.25); }
-    .tag-bid { background: rgba(255,200,60,0.1); color: #ffc83c; border: 1px solid rgba(255,200,60,0.25); }
 
-    .hero-ctas { display: flex; gap: 1rem; animation: fadeUp 0.6s 0.4s ease both; }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .tag {
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-ai {
+      background: rgba(0, 245, 196, 0.1);
+      color: var(--accent1);
+      border: 1px solid rgba(0, 245, 196, 0.25);
+    }
+
+    .tag-cyber {
+      background: rgba(120, 120, 120, 0.08);
+      color: var(--accent2);
+      border: 1px solid rgba(255, 61, 110, 0.25);
+    }
+
+    .tag-cloud {
+      background: rgba(91, 140, 255, 0.1);
+      color: var(--accent3);
+      border: 1px solid rgba(91, 140, 255, 0.25);
+    }
+
+    .tag-bid {
+      background: rgba(255, 200, 60, 0.1);
+      color: #ffc83c;
+      border: 1px solid rgba(255, 200, 60, 0.25);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
     .btn-primary {
-      padding: 0.85rem 2rem; background: var(--accent1); color: #060a10;
-      font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.04em; border: none; border-radius: 8px; cursor: pointer;
-      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 30px rgba(0,245,196,0.3);
+      padding: 0.85rem 2rem;
+      background: var(--accent1);
+      color: #060a10;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0, 245, 196, 0.3);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,245,196,0.5); }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(0, 245, 196, 0.5);
+    }
+
     .btn-outline {
-      padding: 0.85rem 2rem; background: transparent; color: var(--text);
-      font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.04em; border: 1px solid var(--border); border-radius: 8px;
-      cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .btn-outline:hover { border-color: var(--accent1); color: var(--accent1); }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+    .btn-outline:hover {
+      border-color: var(--accent1);
+      color: var(--accent1);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 
     /* SECTIONS */
-    section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent1); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.75rem;
+    section {
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent1); }
-    .section-title { font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 3rem; line-height: 1.1; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--accent1);
+    }
+
+    .section-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      line-height: 1.1;
+    }
 
     /* ABOUT */
-    #about { border-top: 1px solid var(--border); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-text p { font-size: 1.05rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.25rem; }
-    .about-text p strong { color: var(--text); font-weight: 500; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    #about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
     .stat-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-      padding: 1.75rem; position: relative; overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
       transition: border-color 0.3s, transform 0.3s;
     }
-    .stat-card:hover { border-color: var(--accent1); transform: translateY(-4px); }
-    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent1), var(--accent3)); opacity: 0; transition: opacity 0.3s; }
-    .stat-card:hover::before { opacity: 1; }
-    .stat-number { font-family: 'Manrope', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent1); line-height: 1; margin-bottom: 0.4rem; }
-    .stat-label { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.04em; }
+
+    .stat-card:hover {
+      border-color: var(--accent1);
+      transform: translateY(-4px);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent3));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-number {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent1);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
 
     /* SKILLS */
-    #skills { border-top: 1px solid var(--border); }
-    .skills-domains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
-    .domain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: transform 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
-    .domain-card:hover { transform: translateY(-6px); }
-    .domain-card.ai:hover { border-color: var(--accent1); }
-    .domain-card.cyber:hover { border-color: var(--accent2); }
-    .domain-card.cloud:hover { border-color: var(--accent3); }
-    .domain-icon { font-size: 2.2rem; margin-bottom: 1rem; }
-    .domain-name { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .domain-card.ai .domain-name { color: var(--accent1); }
-    .domain-card.cyber .domain-name { color: var(--accent2); }
-    .domain-card.cloud .domain-name { color: var(--accent3); }
-    .domain-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-pill { font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 100px; background: rgba(255,255,255,0.05); color: var(--muted); letter-spacing: 0.03em; }
+    #skills {
+      border-top: 1px solid var(--border);
+    }
 
-    .presales-row { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; }
-    .presales-title { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: 0.04em; }
-    .presales-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .ppill { padding: 0.45rem 1rem; border-radius: 100px; font-size: 0.8rem; background: linear-gradient(135deg, rgba(0,245,196,0.08), rgba(91,140,255,0.08)); border: 1px solid rgba(255,255,255,0.1); color: var(--text); }
+    .skills-domains {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
 
-    .tools-row { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin-top: 1.5rem; }
+    .domain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .domain-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .domain-card.ai:hover {
+      border-color: var(--accent1);
+    }
+
+    .domain-card.cyber:hover {
+      border-color: var(--accent2);
+    }
+
+    .domain-card.cloud:hover {
+      border-color: var(--accent3);
+    }
+
+    .domain-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .domain-name {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .domain-card.ai .domain-name {
+      color: var(--accent1);
+    }
+
+    .domain-card.cyber .domain-name {
+      color: var(--accent2);
+    }
+
+    .domain-card.cloud .domain-name {
+      color: var(--accent3);
+    }
+
+    .domain-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .presales-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .presales-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .presales-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .ppill {
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      background: linear-gradient(135deg, rgba(0, 245, 196, 0.08), rgba(91, 140, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .tools-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
 
     /* EXPERIENCE */
-    #experience { border-top: 1px solid var(--border); }
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent1), var(--accent3), transparent); }
-    .timeline-item { position: relative; margin-bottom: 3rem; padding-left: 2rem; opacity: 0; transform: translateX(-16px); transition: opacity 0.5s, transform 0.5s; }
-    .timeline-item.visible { opacity: 1; transform: translateX(0); }
-    .timeline-dot { position: absolute; left: -2.45rem; top: 0.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent1); box-shadow: 0 0 12px rgba(0,245,196,0.6); }
-    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
-    .exp-role { font-family: 'Manrope', sans-serif; font-size: 1.2rem; font-weight: 700; }
-    .exp-period { font-size: 0.8rem; color: var(--accent1); padding: 0.25rem 0.75rem; border: 1px solid rgba(0,245,196,0.3); border-radius: 100px; }
-    .exp-company { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; font-style: italic; }
-    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .exp-points li { font-size: 0.9rem; color: var(--muted); line-height: 1.6; padding-left: 1.2rem; position: relative; }
-    .exp-points li::before { content: '→'; position: absolute; left: 0; color: var(--accent1); font-size: 0.8rem; }
-    .exp-points li strong { color: var(--text); font-weight: 500; }
+    #experience {
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent1), var(--accent3), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.45rem;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent1);
+      box-shadow: 0 0 12px rgba(0, 245, 196, 0.6);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .exp-role {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--accent1);
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(0, 245, 196, 0.3);
+      border-radius: 100px;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .exp-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-points li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .exp-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent1);
+      font-size: 0.8rem;
+    }
+
+    .exp-points li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
     /* KEY BIDS */
-    .bids-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
-    .bid-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; transition: border-color 0.3s, transform 0.3s; }
-    .bid-card:hover { border-color: var(--accent3); transform: translateY(-4px); }
-    .bid-domain { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent3); margin-bottom: 0.75rem; }
-    .bid-title { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.3; }
-    .bid-points { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .bid-points li { font-size: 0.82rem; color: var(--muted); padding-left: 1rem; position: relative; line-height: 1.5; }
-    .bid-points li::before { content: '·'; position: absolute; left: 0; color: var(--accent1); }
+    .bids-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .bid-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .bid-card:hover {
+      border-color: var(--accent3);
+      transform: translateY(-4px);
+    }
+
+    .bid-domain {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent3);
+      margin-bottom: 0.75rem;
+    }
+
+    .bid-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .bid-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .bid-points li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .bid-points li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent1);
+    }
 
     /* CONTACT */
-    #contact { border-top: 1px solid var(--border); }
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .contact-intro { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text); padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s, transform 0.2s; }
-    .contact-link:hover { border-color: var(--accent1); transform: translateX(4px); }
-    .contact-link-icon { font-size: 1.3rem; }
-    .contact-link-info { flex: 1; }
-    .contact-link-type { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-    .contact-link-value { font-size: 0.9rem; font-weight: 500; }
-    .contact-extra { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
-    .contact-extra-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.75rem; }
-    .lang-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .lang-pill { padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.78rem; background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border); }
+    #contact {
+      border-top: 1px solid var(--border);
+    }
 
-    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
-    .form-group input, .form-group textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; resize: none; transition: border-color 0.2s; outline: none; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent1); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
 
-    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
+    .glass-card {
+      background: rgba(13, 20, 33, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .glass-card.phone-card:hover {
+      border-color: var(--accent1);
+      box-shadow: 0 12px 40px rgba(0, 245, 196, 0.15);
+      background: rgba(0, 245, 196, 0.03);
+      transform: translateY(-6px);
+    }
+
+    .glass-card.email-card:hover {
+      border-color: var(--accent3);
+      box-shadow: 0 12px 40px rgba(91, 140, 255, 0.15);
+      background: rgba(91, 140, 255, 0.03);
+      transform: translateY(-6px);
+    }
+
+    .glass-card.linkedin-card:hover {
+      border-color: #0077b5;
+      box-shadow: 0 12px 40px rgba(0, 119, 181, 0.2);
+      background: rgba(0, 119, 181, 0.03);
+      transform: translateY(-6px);
+    }
+
+    .glass-card.instagram-card:hover {
+      border-color: var(--accent2);
+      box-shadow: 0 12px 40px rgba(255, 61, 110, 0.15);
+      background: rgba(255, 61, 110, 0.03);
+      transform: translateY(-6px);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .glass-card:hover .card-icon {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      z-index: 2;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    .card-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+    }
+
+    .glass-card:hover .card-label {
+      color: var(--text);
+    }
+
+    .card-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-word;
+      color: var(--text);
+    }
+
+    .card-arrow {
+      margin-top: 1.25rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: transform 0.3s ease, color 0.3s ease;
+      z-index: 2;
+    }
+
+    .glass-card:hover .card-arrow {
+      transform: translateX(4px);
+      color: var(--text);
+    }
+
+    .contact-extra {
+      margin-top: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .contact-extra-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .lang-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-pill {
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
 
     @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.75rem; }
-      #hero { padding: 7rem 1.5rem 3rem; }
-      section { padding: 4rem 1.5rem; }
-      .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
-      .skills-domains, .bids-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: 0.75rem;
+      }
+
+      .hero-wrapper {
+        flex-direction: column;
+        gap: 4rem;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        order: 1;
+      }
+
+      .hero-visual {
+        max-width: 100%;
+        width: 100%;
+        height: 420px;
+        order: 2;
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+      }
+
+      .network-container {
+        width: 550px;
+        height: 550px;
+        flex-shrink: 0;
+        transform: scale(0.68);
+        transform-origin: center;
+      }
+
+
+      .dune-title {
+        align-items: center;
+      }
+
+      .dune-line {
+        justify-content: center;
+      }
+
+      .dune-line span {
+        margin-right: 0.25em;
+      }
+
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-tags,
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills-domains,
+      .bids-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">SP/</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">SP/</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section id="hero" style="max-width:100%; padding-left:4rem; padding-right:4rem;">
-  <div class="hero-bg-circle hbc1"></div>
-  <div class="hero-bg-circle hbc2"></div>
-  <div class="hero-bg-circle hbc3"></div>
-  <div class="hero-wrapper">
-  <div class="hero-content">
-    <div class="hero-badge"><span></span>Strategic Bids • AI • Digital Transformation</div>
-    <p class="hero-subtitle">Pre-Sales | Bid Management | AI | Cloud | Cybersecurity</p>
-    <h1 class="hero-title">
-        Siddharth <span class="line2">Pendyala</span>
-    </h1>
-    <p class="hero-desc">
-      Supporting strategic bids across Government, PSU and Enterprise sectors, with expertise in compliance management, proposal development, AI, Cloud and Cybersecurity solutions.
-    </p>
-    <div class="hero-tags">
-      <span class="tag tag-ai">🤖 Artificial Intelligence</span>
-      <span class="tag tag-cyber">🔐 Cyber Security</span>
-      <span class="tag tag-cloud">☁️ Cloud Infrastructure</span>
-      <span class="tag tag-bid">📋 Bid & Tender Management</span>
-    </div>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn-primary">Let's Connect</a>
-      <a href="#experience" class="btn-outline">View My Work</a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">Who I Am</div>
-  <h2 class="section-title">Where Tech Meets<br>Winning Proposals</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        I'm a <strong>Pre-Sales & Bid Management professional</strong> with 2+ years of experience supporting end-to-end tendering across Government, PSU, and Private sector engagements.
-      </p>
-      <p>
-        Specialised in <strong>IT, Cyber Security, AI, and infrastructure-related bids</strong> — with strong capability in RFP analysis, compliance structuring, and technical proposal development.
-      </p>
-      <p>
-        I translate complex technical requirements into <strong>structured, evaluator-friendly responses</strong>, ensuring alignment with client expectations and tender evaluation criteria. Exposure to high-value, multi-stakeholder bids — including national-level initiatives.
-      </p>
-      <p>
-        Aspiring <strong>APMP certified</strong> professional. B.Tech in Electronics & Communication Engineering — GIET, JNTUK University (2018–2022).
-      </p>
-    </div>
-    <div class="about-stats">
-      <div class="stat-card">
-        <div class="stat-number">2+</div>
-        <div class="stat-label">Years in Pre-Sales & Bid Management</div>
+  <!-- HERO -->
+  <section id="hero"
+    style="max-width:1400px; margin: 0 auto; padding-left:4rem; padding-right:4rem; display: flex; align-items: center; min-height: 100vh;">
+    <div class="hero-bg-circle hbc1"></div>
+    <div class="hero-bg-circle hbc2"></div>
+    <div class="hero-bg-circle hbc3"></div>
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-badge"><span></span>Bid Management Professional • AI Explorer • Digital Transformation</div>
+        <p class="hero-subtitle">Pre-Sales | Bid Management | AI | Cloud | Cybersecurity</p>
+        <h1 class="hero-title dune-title">
+          <span class="dune-line dune-first">
+            <span>S</span><span>I</span><span>D</span><span>D</span><span>H</span><span>A</span><span>R</span><span>T</span><span>H</span>
+          </span>
+          <span class="dune-line dune-last">
+            <span>P</span><span>E</span><span>N</span><span>D</span><span>Y</span><span>A</span><span>L</span><span>A</span>
+          </span>
+        </h1>
+        <p class="hero-desc">
+          Supporting strategic bids across Government, PSU and Enterprise sectors, with expertise in compliance
+          management, proposal development, AI, Cloud and Cybersecurity solutions.
+        </p>
+        <div class="hero-tags">
+          <span class="tag tag-ai">🤖 Artificial Intelligence</span>
+          <span class="tag tag-cyber">🔐 Cyber Security</span>
+          <span class="tag tag-cloud">☁️ Cloud Infrastructure</span>
+          <span class="tag tag-bid">📋 Bid & Tender Management</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Let's Connect</a>
+          <a href="#experience" class="btn-outline">View My Work</a>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">Bids & Proposals Delivered</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Core Tech Domains</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">10+</div>
-        <div class="stat-label">Govt. Procurement Portals Tracked</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">What I Bring</div>
-  <h2 class="section-title">Domain Expertise &<br>Core Capabilities</h2>
-
-  <div class="skills-domains">
-    <div class="domain-card ai">
-      <div class="domain-icon">🤖</div>
-      <div class="domain-name">AI / IT Infrastructure</div>
-      <div class="domain-desc">Positioning AI and IT infrastructure solutions in enterprise and government tenders, including national-level initiatives.</div>
-      <div class="skill-pills">
-        <span class="skill-pill">AI Infrastructure</span>
-        <span class="skill-pill">IT Solutions</span>
-        <span class="skill-pill">Technical Documentation</span>
-        <span class="skill-pill">RFP Analysis</span>
-      </div>
-    </div>
-    <div class="domain-card cyber">
-      <div class="domain-icon">🔐</div>
-      <div class="domain-name">Cyber Security</div>
-      <div class="domain-desc">Structuring compliance-focused security proposals for enterprise and PSU procurement across various security domains.</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Security Fundamentals</span>
-        <span class="skill-pill">Compliance Structuring</span>
-        <span class="skill-pill">Risk Documentation</span>
-        <span class="skill-pill">Technical Proposals</span>
-      </div>
-    </div>
-    <div class="domain-card cloud">
-      <div class="domain-icon">☁️</div>
-      <div class="domain-name">Cloud Infrastructure</div>
-      <div class="domain-desc">Supporting cloud-related bids and proposals with focus on solution structuring, requirement interpretation, and business alignment.</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Cloud Basics</span>
-        <span class="skill-pill">Solution Structuring</span>
-        <span class="skill-pill">Requirement Mapping</span>
-        <span class="skill-pill">Business Alignment</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="presales-row">
-    <div class="presales-title">⚡ Bid & Pre-Sales Competencies</div>
-    <div class="presales-pills">
-      <span class="ppill">RFP / RFQ / RFI / EOI Analysis</span>
-      <span class="ppill">Compliance Matrix Preparation</span>
-      <span class="ppill">Technical Proposal Writing</span>
-      <span class="ppill">Bid Lifecycle Management</span>
-      <span class="ppill">Solution Architecture Support</span>
-      <span class="ppill">Stakeholder Coordination</span>
-      <span class="ppill">Tender Evaluation Criteria</span>
-      <span class="ppill">Post-Submission Coordination</span>
-      <span class="ppill">Requirement Interpretation</span>
-      <span class="ppill">Business Alignment</span>
-    </div>
-  </div>
-
-  <div class="tools-row presales-row" style="margin-top:1.5rem;">
-    <div class="presales-title">🛠 Tools & Platforms</div>
-    <div class="presales-pills">
-      <span class="ppill">MS Word</span>
-      <span class="ppill">MS Excel</span>
-      <span class="ppill">MS PowerPoint</span>
-      <span class="ppill">GeM Portal</span>
-      <span class="ppill">CPPP / eProcure</span>
-      <span class="ppill">State e-Procurement Portals</span>
-      <span class="ppill">MSTC</span>
-      <span class="ppill">NIC Tender Portal</span>
-      <span class="ppill">Defence Procurement Portals</span>
-      <span class="ppill">Municipal / ULB Portals</span>
-      <span class="ppill">Analytical Thinking</span>
-      <span class="ppill">Attention to Detail</span>
-      <span class="ppill">Time Management</span>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">My Journey</div>
-  <h2 class="section-title">Professional Experience<br>& Key Bids</h2>
-
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="exp-header">
-        <div class="exp-role">Pre-Sales & Bid Executive</div>
-        <div class="exp-period">July 2025 – Present</div>
-      </div>
-      <div class="exp-company">ParadigmIT Technology Services Pvt. Ltd.</div>
-      <ul class="exp-points">
-        <li>Identify and evaluate IT, Cyber Security, AI, and Cloud-based tender opportunities aligned with organizational capabilities.</li>
-        <li>Perform detailed <strong>RFP/RFQ/RFI/EOI analysis</strong>, interpreting technical, commercial, and eligibility criteria.</li>
-        <li>Develop clause-wise compliance matrices ensuring traceability and alignment with tender requirements.</li>
-        <li>Draft structured technical proposals covering scope understanding, solution approach, implementation methodology, and deliverables.</li>
-        <li>Collaborate with sales, technical, finance, and leadership teams to gather inputs and build competitive proposals.</li>
-        <li>Manage complete <strong>bid lifecycle</strong> including documentation, formatting, submission, and post-submission coordination.</li>
-        <li>Contributed to <strong>National-Level AI Infrastructure Bid</strong>, supporting successful empanelment through structured compliance management and technical documentation.</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:var(--accent3); box-shadow: 0 0 12px rgba(91,140,255,0.6);"></div>
-      <div class="exp-header">
-        <div class="exp-role">Tender Executive</div>
-        <div class="exp-period">Dec 2023 – June 2025</div>
-      </div>
-      <div class="exp-company">Leadspace</div>
-      <ul class="exp-points">
-        <li>Managed end-to-end tendering processes across <strong>Advertising, Solid Waste Management (SWM), and Construction</strong> domains.</li>
-        <li>Identified and evaluated relevant government tenders through <strong>GeM and e-procurement portals</strong>.</li>
-        <li>Coordinated with internal stakeholders to compile, validate, and structure bid documentation.</li>
-        <li>Streamlined documentation and submission processes, improving efficiency and reducing turnaround time.</li>
-        <li>Ensured strict adherence to compliance requirements, timelines, and submission guidelines.</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:var(--accent2); box-shadow: 0 0 12px rgba(255,61,110,0.6);"></div>
-      <div class="exp-header">
-        <div class="exp-role">B.Tech – Electronics & Communication Eng.</div>
-        <div class="exp-period">2018 – 2022</div>
-      </div>
-      <div class="exp-company">GIET – JNTUK University</div>
-      <ul class="exp-points">
-        <li>Graduated with a strong technical foundation in electronics, communication systems, and IT.</li>
-        <li>Developed analytical and documentation skills directly applied to pre-sales and bid management work.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- KEY BIDS -->
-  <div class="section-label" style="margin-top:3rem;">Key Bids & Proposals — 15+ Across Domains</div>
-  <div class="bids-grid">
-    <div class="bid-card">
-      <div class="bid-domain">AI / IT Infrastructure</div>
-      <div class="bid-title">National-Level AI Infrastructure Initiative</div>
-      <ul class="bid-points">
-        <li>Large-scale government AI infrastructure empanelment bid.</li>
-        <li>Prepared compliance matrices and technical documentation aligned with RFP criteria.</li>
-        <li>Supported successful empanelment through structured submission.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Cyber Security</div>
-      <div class="bid-title">Cyber SOC / Managed Security Services</div>
-      <ul class="bid-points">
-        <li>End-to-end proposal for a Security Operations Centre (SOC) managed service bid.</li>
-        <li>Structured compliance matrix and technical scope covering SIEM, threat monitoring, and incident response.</li>
-        <li>Coordinated with security architects to align deliverables with evaluator expectations.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Cloud</div>
-      <div class="bid-title">Cloud MSP & Managed Cloud Services</div>
-      <ul class="bid-points">
-        <li>Bid support for Managed Cloud Services Provider (MSP) engagement.</li>
-        <li>Drafted solution approach covering cloud operations, SLA structuring, and migration scope.</li>
-        <li>Ensured alignment with technical and commercial evaluation criteria.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Cloud Infrastructure</div>
-      <div class="bid-title">Cloud Infrastructure Deployment Bids</div>
-      <ul class="bid-points">
-        <li>Multiple cloud-related tenders covering infrastructure provisioning and managed services.</li>
-        <li>Structured technical proposals with solution architecture, implementation methodology, and SLAs.</li>
-        <li>Coordinated multi-vendor inputs and pricing consolidation.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Urban Infrastructure</div>
-      <div class="bid-title">Municipal Solid Waste Management – Mechanized Sweeping</div>
-      <ul class="bid-points">
-        <li>Large-scale municipal infrastructure bid covering mechanized sweeping services.</li>
-        <li>Managed compliance documentation, BoQ structuring, and bid submission.</li>
-        <li>Coordinated internal teams to meet strict submission timelines.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Advertising / Urban</div>
-      <div class="bid-title">Metro Advertising – Urban Infrastructure</div>
-      <ul class="bid-points">
-        <li>Bid preparation and post-award documentation for metro advertising project.</li>
-        <li>Proposal structuring and internal coordination for execution readiness.</li>
-        <li>Documentation alignment with client and project requirements.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Advertising</div>
-      <div class="bid-title">Outdoor & Transit Advertising Tenders</div>
-      <ul class="bid-points">
-        <li>Multiple advertising tenders across transit, outdoor, and media placement domains.</li>
-        <li>End-to-end bid management including GeM and state portal submissions.</li>
-        <li>Ensured compliance with eligibility and technical criteria across submissions.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">Construction</div>
-      <div class="bid-title">Civil & Construction Infrastructure Tenders</div>
-      <ul class="bid-points">
-        <li>Managed tendering for construction and civil infrastructure projects.</li>
-        <li>Compiled technical documentation and validated bid packages for government portals.</li>
-        <li>Streamlined processes to reduce turnaround time significantly.</li>
-      </ul>
-    </div>
-    <div class="bid-card">
-      <div class="bid-domain">IT / Tech</div>
-      <div class="bid-title">IT Services & Infrastructure Bids (Multiple)</div>
-      <ul class="bid-points">
-        <li>Series of IT services tenders covering networking, hardware supply, and AMC contracts.</li>
-        <li>Evaluated opportunities via CPPP, eProcure, and state portals alongside GeM.</li>
-        <li>Managed full documentation lifecycle for compliant, timely submission.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Get In Touch</div>
-  <h2 class="section-title">Let's Work on the<br>Next Winning Bid</h2>
-  <div class="contact-wrapper">
-    <div>
-      <p class="contact-intro">
-        Whether you're building a pre-sales team, have a complex tender that needs the right approach, or just want to connect — I'd love to hear from you.
-      </p>
-      <div class="contact-links">
-        <a href="tel:7075227089" class="contact-link">
-          <span class="contact-link-icon">📱</span>
-          <div class="contact-link-info">
-            <div class="contact-link-type">Phone</div>
-            <div class="contact-link-value">7075227089</div>
+      <div class="hero-visual">
+        <div class="network-container">
+          <div class="central-sphere"></div>
+          <canvas id="network-canvas"></canvas>
+          <!-- Nodes -->
+          <div class="network-node" style="top: 15%; left: 20%; --dur: 7s; --tx: 15px; --ty: -10px;" data-node="AI">AI
           </div>
-          <span style="color:var(--muted)">→</span>
-        </a>
-        <a href="mailto:pvrks2025@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉️</span>
-          <div class="contact-link-info">
-            <div class="contact-link-type">Email</div>
-            <div class="contact-link-value">pvrks2025@gmail.com</div>
+          <div class="network-node" style="top: 25%; left: 65%; --dur: 8s; --tx: -10px; --ty: 15px;" data-node="Cloud">
+            Cloud</div>
+          <div class="network-node" style="top: 50%; left: 75%; --dur: 6s; --tx: 10px; --ty: 10px;" data-node="Cyber">
+            Cyber</div>
+          <div class="network-node" style="top: 65%; left: 15%; --dur: 9s; --tx: -15px; --ty: -5px;" data-node="GeM">GeM
           </div>
-          <span style="color:var(--muted)">→</span>
-        </a>
-        <a href="https://linkedin.com/in/pvrksiddharth" class="contact-link" target="_blank">
-          <span class="contact-link-icon">💼</span>
-          <div class="contact-link-info">
-            <div class="contact-link-type">LinkedIn</div>
-            <div class="contact-link-value">linkedin.com/in/pvrksiddharth</div>
-          </div>
-          <span style="color:var(--muted)">→</span>
-        </a>
+          <div class="network-node" style="top: 80%; left: 45%; --dur: 7.5s; --tx: 12px; --ty: -12px;" data-node="CPPP">
+            CPPP</div>
+          <div class="network-node" style="top: 20%; left: 45%; --dur: 8.5s; --tx: -8px; --ty: -15px;" data-node="RFP">
+            RFP</div>
+          <div class="network-node" style="top: 45%; left: 10%; --dur: 6.5s; --tx: 15px; --ty: 8px;"
+            data-node="Compliance">Compliance</div>
+          <div class="network-node" style="bottom: 20%; right: 10%; --dur: 7s; --tx: -10px; --ty: 12px;"
+            data-node="Strategy">Strategy</div>
+          <div class="network-node" style="top: 55%; left: 40%; --dur: 8s; --tx: 5px; --ty: 15px;"
+            data-node="Digital Transformation">Digital Transformation</div>
+        </div>
       </div>
-      <div class="contact-extra">
-        <div class="contact-extra-title">Languages</div>
-        <div class="lang-pills">
-          <span class="lang-pill">English</span>
-          <span class="lang-pill">Hindi</span>
-          <span class="lang-pill">Telugu</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title">Where Tech Meets<br>Winning Proposals</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>Pre-Sales & Bid Management professional</strong> with 2+ years of experience supporting
+          end-to-end tendering across Government, PSU, and Private sector engagements.
+        </p>
+        <p>
+          Specialised in <strong>IT, Cyber Security, AI, and infrastructure-related bids</strong> — with strong
+          capability in RFP analysis, compliance structuring, and technical proposal development.
+        </p>
+        <p>
+          I translate complex technical requirements into <strong>structured, evaluator-friendly responses</strong>,
+          ensuring alignment with client expectations and tender evaluation criteria. Exposure to high-value,
+          multi-stakeholder bids — including national-level initiatives.
+        </p>
+        <p>
+          Aspiring <strong>APMP certified</strong> professional. B.Tech in Electronics & Communication Engineering —
+          GIET, JNTUK University (2018–2022).
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years in Pre-Sales & Bid Management</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Bids & Proposals Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Core Tech Domains</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Govt. Procurement Portals Tracked</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">What I Bring</div>
+    <h2 class="section-title">Domain Expertise &<br>Core Capabilities</h2>
+
+    <div class="skills-domains">
+      <div class="domain-card ai">
+        <div class="domain-icon">🤖</div>
+        <div class="domain-name">AI / IT Infrastructure</div>
+        <div class="domain-desc">Positioning AI and IT infrastructure solutions in enterprise and government tenders,
+          including national-level initiatives.</div>
+        <div class="skill-pills">
+          <span class="skill-pill">AI Infrastructure</span>
+          <span class="skill-pill">IT Solutions</span>
+          <span class="skill-pill">Technical Documentation</span>
+          <span class="skill-pill">RFP Analysis</span>
+        </div>
+      </div>
+      <div class="domain-card cyber">
+        <div class="domain-icon">🔐</div>
+        <div class="domain-name">Cyber Security</div>
+        <div class="domain-desc">Structuring compliance-focused security proposals for enterprise and PSU procurement
+          across various security domains.</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Security Fundamentals</span>
+          <span class="skill-pill">Compliance Structuring</span>
+          <span class="skill-pill">Risk Documentation</span>
+          <span class="skill-pill">Technical Proposals</span>
+        </div>
+      </div>
+      <div class="domain-card cloud">
+        <div class="domain-icon">☁️</div>
+        <div class="domain-name">Cloud Infrastructure</div>
+        <div class="domain-desc">Supporting cloud-related bids and proposals with focus on solution structuring,
+          requirement interpretation, and business alignment.</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Cloud Basics</span>
+          <span class="skill-pill">Solution Structuring</span>
+          <span class="skill-pill">Requirement Mapping</span>
+          <span class="skill-pill">Business Alignment</span>
         </div>
       </div>
     </div>
 
-    <div class="contact-form">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" placeholder="John Smith" />
+    <div class="presales-row">
+      <div class="presales-title">⚡ Bid & Pre-Sales Competencies</div>
+      <div class="presales-pills">
+        <span class="ppill">RFP / RFQ / RFI / EOI Analysis</span>
+        <span class="ppill">Compliance Matrix Preparation</span>
+        <span class="ppill">Technical Proposal Writing</span>
+        <span class="ppill">Bid Lifecycle Management</span>
+        <span class="ppill">Solution Architecture Support</span>
+        <span class="ppill">Stakeholder Coordination</span>
+        <span class="ppill">Tender Evaluation Criteria</span>
+        <span class="ppill">Post-Submission Coordination</span>
+        <span class="ppill">Requirement Interpretation</span>
+        <span class="ppill">Business Alignment</span>
       </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="john@company.com" />
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea rows="5" placeholder="Tell me about the opportunity or project..."></textarea>
-      </div>
-      <a href="mailto:pvrks2025@gmail.com" class="btn-primary" style="text-align:center;">Send Message</a>
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 SIDDHARTH PENDYALA · Pre-Sales & Bid Management · Deployed on Netlify</p>
-</footer>
+    <div class="tools-row presales-row" style="margin-top:1.5rem;">
+      <div class="presales-title">🛠 Tools & Platforms</div>
+      <div class="presales-pills">
+        <span class="ppill">MS Word</span>
+        <span class="ppill">MS Excel</span>
+        <span class="ppill">MS PowerPoint</span>
+        <span class="ppill">GeM Portal</span>
+        <span class="ppill">CPPP / eProcure</span>
+        <span class="ppill">State e-Procurement Portals</span>
+        <span class="ppill">MSTC</span>
+        <span class="ppill">NIC Tender Portal</span>
+        <span class="ppill">Defence Procurement Portals</span>
+        <span class="ppill">Municipal / ULB Portals</span>
+        <span class="ppill">Analytical Thinking</span>
+        <span class="ppill">Attention to Detail</span>
+        <span class="ppill">Time Management</span>
+      </div>
+    </div>
+  </section>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 150);
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">My Journey</div>
+    <h2 class="section-title">Professional Experience<br>& Key Bids</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Pre-Sales & Bid Executive</div>
+          <div class="exp-period">July 2025 – Present</div>
+        </div>
+        <div class="exp-company">ParadigmIT Technology Services Pvt. Ltd.</div>
+        <ul class="exp-points">
+          <li>Identify and evaluate IT, Cyber Security, AI, and Cloud-based tender opportunities aligned with
+            organizational capabilities.</li>
+          <li>Perform detailed <strong>RFP/RFQ/RFI/EOI analysis</strong>, interpreting technical, commercial, and
+            eligibility criteria.</li>
+          <li>Develop clause-wise compliance matrices ensuring traceability and alignment with tender requirements.</li>
+          <li>Draft structured technical proposals covering scope understanding, solution approach, implementation
+            methodology, and deliverables.</li>
+          <li>Collaborate with sales, technical, finance, and leadership teams to gather inputs and build competitive
+            proposals.</li>
+          <li>Manage complete <strong>bid lifecycle</strong> including documentation, formatting, submission, and
+            post-submission coordination.</li>
+          <li>Contributed to <strong>National-Level AI Infrastructure Bid</strong>, supporting successful empanelment
+            through structured compliance management and technical documentation.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent3); box-shadow: 0 0 12px rgba(91,140,255,0.6);"></div>
+        <div class="exp-header">
+          <div class="exp-role">Tender Executive</div>
+          <div class="exp-period">Dec 2023 – June 2025</div>
+        </div>
+        <div class="exp-company">Leadspace</div>
+        <ul class="exp-points">
+          <li>Managed end-to-end tendering processes across <strong>Advertising, Solid Waste Management (SWM), and
+              Construction</strong> domains.</li>
+          <li>Identified and evaluated relevant government tenders through <strong>GeM and e-procurement
+              portals</strong>.</li>
+          <li>Coordinated with internal stakeholders to compile, validate, and structure bid documentation.</li>
+          <li>Streamlined documentation and submission processes, improving efficiency and reducing turnaround time.
+          </li>
+          <li>Ensured strict adherence to compliance requirements, timelines, and submission guidelines.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent2); box-shadow: 0 0 12px rgba(255,61,110,0.6);"></div>
+        <div class="exp-header">
+          <div class="exp-role">B.Tech – Electronics & Communication Eng.</div>
+          <div class="exp-period">2018 – 2022</div>
+        </div>
+        <div class="exp-company">GIET – JNTUK University</div>
+        <ul class="exp-points">
+          <li>Graduated with a strong technical foundation in electronics, communication systems, and IT.</li>
+          <li>Developed analytical and documentation skills directly applied to pre-sales and bid management work.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KEY BIDS -->
+    <div class="section-label" style="margin-top:3rem;">Key Bids & Proposals — 15+ Across Domains</div>
+    <div class="bids-grid">
+      <div class="bid-card">
+        <div class="bid-domain">AI / IT Infrastructure</div>
+        <div class="bid-title">National-Level AI Infrastructure Initiative</div>
+        <ul class="bid-points">
+          <li>Large-scale government AI infrastructure empanelment bid.</li>
+          <li>Prepared compliance matrices and technical documentation aligned with RFP criteria.</li>
+          <li>Supported successful empanelment through structured submission.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Cyber Security</div>
+        <div class="bid-title">Cyber SOC / Managed Security Services</div>
+        <ul class="bid-points">
+          <li>End-to-end proposal for a Security Operations Centre (SOC) managed service bid.</li>
+          <li>Structured compliance matrix and technical scope covering SIEM, threat monitoring, and incident response.
+          </li>
+          <li>Coordinated with security architects to align deliverables with evaluator expectations.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Cloud</div>
+        <div class="bid-title">Cloud MSP & Managed Cloud Services</div>
+        <ul class="bid-points">
+          <li>Bid support for Managed Cloud Services Provider (MSP) engagement.</li>
+          <li>Drafted solution approach covering cloud operations, SLA structuring, and migration scope.</li>
+          <li>Ensured alignment with technical and commercial evaluation criteria.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Cloud Infrastructure</div>
+        <div class="bid-title">Cloud Infrastructure Deployment Bids</div>
+        <ul class="bid-points">
+          <li>Multiple cloud-related tenders covering infrastructure provisioning and managed services.</li>
+          <li>Structured technical proposals with solution architecture, implementation methodology, and SLAs.</li>
+          <li>Coordinated multi-vendor inputs and pricing consolidation.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Urban Infrastructure</div>
+        <div class="bid-title">Municipal Solid Waste Management – Mechanized Sweeping</div>
+        <ul class="bid-points">
+          <li>Large-scale municipal infrastructure bid covering mechanized sweeping services.</li>
+          <li>Managed compliance documentation, BoQ structuring, and bid submission.</li>
+          <li>Coordinated internal teams to meet strict submission timelines.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Advertising / Urban</div>
+        <div class="bid-title">Metro Advertising – Urban Infrastructure</div>
+        <ul class="bid-points">
+          <li>Bid preparation and post-award documentation for metro advertising project.</li>
+          <li>Proposal structuring and internal coordination for execution readiness.</li>
+          <li>Documentation alignment with client and project requirements.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Advertising</div>
+        <div class="bid-title">Outdoor & Transit Advertising Tenders</div>
+        <ul class="bid-points">
+          <li>Multiple advertising tenders across transit, outdoor, and media placement domains.</li>
+          <li>End-to-end bid management including GeM and state portal submissions.</li>
+          <li>Ensured compliance with eligibility and technical criteria across submissions.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">Construction</div>
+        <div class="bid-title">Civil & Construction Infrastructure Tenders</div>
+        <ul class="bid-points">
+          <li>Managed tendering for construction and civil infrastructure projects.</li>
+          <li>Compiled technical documentation and validated bid packages for government portals.</li>
+          <li>Streamlined processes to reduce turnaround time significantly.</li>
+        </ul>
+      </div>
+      <div class="bid-card">
+        <div class="bid-domain">IT / Tech</div>
+        <div class="bid-title">IT Services & Infrastructure Bids (Multiple)</div>
+        <ul class="bid-points">
+          <li>Series of IT services tenders covering networking, hardware supply, and AMC contracts.</li>
+          <li>Evaluated opportunities via CPPP, eProcure, and state portals alongside GeM.</li>
+          <li>Managed full documentation lifecycle for compliant, timely submission.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's Work on the<br>Next Winning Bid</h2>
+
+    <p class="contact-intro" style="max-width: 800px; margin-bottom: 3rem;">
+      Whether you're building a pre-sales team, have a complex tender that needs the right approach, or just want to
+      connect — I'd love to hear from you.
+    </p>
+
+    <div class="contact-grid">
+      <a href="tel:7075227089" class="glass-card phone-card">
+        <div class="card-icon">📱</div>
+        <div class="card-content">
+          <span class="card-label">Phone</span>
+          <span class="card-value">7075227089</span>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="mailto:siddharthpendyala75872@gmail.com" class="glass-card email-card">
+        <div class="card-icon">✉️</div>
+        <div class="card-content">
+          <span class="card-label">Email</span>
+          <span class="card-value">siddharthpendyala75872@gmail.com</span>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://linkedin.com/in/pvrksiddharth" class="glass-card linkedin-card" target="_blank"
+        rel="noopener noreferrer">
+        <div class="card-icon">💼</div>
+        <div class="card-content">
+          <span class="card-label">LinkedIn</span>
+          <span class="card-value">linkedin.com/in/pvrksiddharth</span>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://instagram.com/itzzz_siddharth" class="glass-card instagram-card" target="_blank"
+        rel="noopener noreferrer">
+        <div class="card-icon">📸</div>
+        <div class="card-content">
+          <span class="card-label">Instagram</span>
+          <span class="card-value">@itzzz_siddharth</span>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+
+    <div class="contact-extra" style="margin-top: 3rem; max-width: fit-content; margin-left: auto; margin-right: auto;">
+      <div class="contact-extra-title" style="text-align: center;">Languages</div>
+      <div class="lang-pills" style="justify-content: center;">
+        <span class="lang-pill">English</span>
+        <span class="lang-pill">Hindi</span>
+        <span class="lang-pill">Telugu</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 SIDDHARTH PENDYALA · Pre-Sales & Bid Management · Deployed on Netlify</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 150);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.stat-card, .bid-card').forEach((el, i) => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.5s ${i * 0.1}s, transform 0.5s ${i * 0.1}s, border-color 0.3s, transform 0.3s`;
+      statObserver.observe(el);
     });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.stat-card, .bid-card').forEach((el, i) => {
-    el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity 0.5s ${i * 0.1}s, transform 0.5s ${i * 0.1}s, border-color 0.3s, transform 0.3s`;
-    statObserver.observe(el);
-  });
-</script>
+    // NETWORK ANIMATION
+    const canvas = document.getElementById('network-canvas');
+    const ctx = canvas.getContext('2d');
+    const nodes = document.querySelectorAll('.network-node');
+    let particles = [];
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+        this.alpha = Math.random() * 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+      }
+      draw() {
+        ctx.fillStyle = `rgba(0, 245, 196, ${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const nodeRects = Array.from(nodes).map(node => {
+        const rect = node.getBoundingClientRect();
+        const parentRect = canvas.getBoundingClientRect();
+        return {
+          x: rect.left - parentRect.left + rect.width / 2,
+          y: rect.top - parentRect.top + rect.height / 2,
+          label: node.getAttribute('data-node')
+        };
+      });
+
+      // Draw lines
+      ctx.strokeStyle = 'rgba(0, 245, 196, 0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < nodeRects.length; i++) {
+        for (let j = i + 1; j < nodeRects.length; j++) {
+          const dx = nodeRects[i].x - nodeRects[j].x;
+          const dy = nodeRects[i].y - nodeRects[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 250) {
+            ctx.beginPath();
+            ctx.moveTo(nodeRects[i].x, nodeRects[i].y);
+            ctx.lineTo(nodeRects[j].x, nodeRects[j].y);
+            ctx.stroke();
+          }
+        }
+
+        // Connect to center
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const dcx = nodeRects[i].x - cx;
+        const dcy = nodeRects[i].y - cy;
+        const ddist = Math.sqrt(dcx * dcx + dcy * dcy);
+        if (ddist < 300) {
+          ctx.strokeStyle = `rgba(91, 140, 255, ${0.1 * (1 - ddist / 300)})`;
+          ctx.beginPath();
+          ctx.moveTo(nodeRects[i].x, nodeRects[i].y);
+          ctx.lineTo(cx, cy);
+          ctx.stroke();
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
+
 </html>
