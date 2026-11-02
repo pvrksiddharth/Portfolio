@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import BuildsSection from './components/BuildsSection';
+import DomainExpertiseSection from './components/DomainExpertiseSection';
 import PlaygroundSection from './components/PlaygroundSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
@@ -24,7 +24,7 @@ export default function App() {
         <Navbar onResumeClick={openResume} />
         <main>
           <HeroSection onResumeClick={openResume} />
-          <BuildsSection />
+          <DomainExpertiseSection />
           <PlaygroundSection />
           <AboutSection />
           <ContactSection onResumeClick={openResume} />

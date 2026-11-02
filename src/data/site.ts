@@ -1,42 +1,57 @@
 /**
  * Central content configuration.
  * All site copy lives here so presentation stays separate from data.
- *
- * NOTE ON PROJECTS: only builds that actually exist are listed. The card
- * component is reusable — add entries to `builds` when there is a real
- * repository or product behind them. Do not fabricate projects.
  */
 
-export const RESUME_PATH = '/resume/Siddharth_Pendyala_Resume.pdf';
+export const RESUME_PATH = '/Siddharth_Pendyala_Resume.pdf';
 
-export interface Build {
+export type DomainIconKey = 'cloud' | 'shield' | 'brain' | 'infra';
+
+export interface Domain {
   name: string;
+  icon: DomainIconKey;
+  /** Short keyword line shown under the heading. */
+  keywords: string;
   description: string;
-  category: string;
-  status: 'live' | 'wip' | 'archived';
-  tags: string[];
-  /** External URL if the project has one. */
-  link?: string;
-  /** GitHub URL only when the repository actually exists. */
-  github?: string;
-  /** Which CSS preview composition renders in the card header. */
-  preview: 'interface' | 'graph' | 'code';
 }
 
-export const builds: Build[] = [
+/**
+ * Domain expertise areas, based on actual pre-sales / bid-management
+ * experience. Descriptions stay grounded — no fabricated metrics or claims.
+ */
+export const domains: Domain[] = [
   {
-    name: 'NEXA HRMS',
+    name: 'Cloud & Managed Services',
+    icon: 'cloud',
+    keywords: 'MSP / CSP · Cloud Infrastructure',
     description:
-      'A human-resource management system I designed and built — employee records, attendance, and workflow interfaces in one internal tool.',
-    category: 'Web Application',
-    status: 'wip',
-    tags: ['React', 'TypeScript', 'UI Systems'],
-    preview: 'interface',
+      'Positioning cloud and managed-service offerings for enterprise bids — solution mapping, partner-ecosystem alignment (MSP/CSP models), and infrastructure scope definition inside proposal documents.',
+  },
+  {
+    name: 'Cybersecurity',
+    icon: 'shield',
+    keywords: 'SOC / NOC · Compliance',
+    description:
+      'Translating security capability into tender language — SOC/NOC service constructs, compliance and certification requirements, and response structuring for security-focused RFPs.',
+  },
+  {
+    name: 'Artificial Intelligence',
+    icon: 'brain',
+    keywords: 'AI Integration · Prompt Engineering',
+    description:
+      'Integrating AI into both the work and the workflow — articulating AI-enabled solutions in proposals, and using prompt engineering with modern AI tools to sharpen research, drafting, and refinement.',
+  },
+  {
+    name: 'IT Infrastructure & Public Sector',
+    icon: 'infra',
+    keywords: 'System Integration · Municipal · Gov/PSU Tenders',
+    description:
+      'End-to-end tender participation across Government, PSU, and municipal opportunities — system-integration scopes, e-procurement documentation, compliance checklists, and bid coordination.',
   },
 ];
 
 export const navLinks = [
-  { label: 'Builds', href: '#builds' },
+  { label: 'Expertise', href: '#expertise' },
   { label: 'Playground', href: '#playground' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
