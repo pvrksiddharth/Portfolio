@@ -10,12 +10,13 @@ export default function ContactSection({ onResumeClick }: ContactProps) {
       <div className="container">
         <p className="section-label reveal">Contact</p>
         <h2 className="contact-lead reveal" id="contact-heading">
-          Have an idea worth<br />
-          <span className="accent-word">building carefully?</span>
+          Have an opportunity<br />
+          <span className="accent-word">worth pursuing?</span>
         </h2>
         <p className="contact-sub reveal">
-          I am always open to interesting conversations — experiments, problems,
-          or just a good technical debate. The fastest way to reach me is email.
+          Whether it is a tender pipeline that needs disciplined coordination or a
+          proposal that deserves a sharper response — the fastest way to reach me
+          is email.
         </p>
 
         <div className="contact-links reveal">
@@ -46,7 +47,7 @@ export default function ContactSection({ onResumeClick }: ContactProps) {
               <line x1="12" y1="18" x2="12" y2="12" />
               <polyline points="9 15 12 18 15 15" />
             </svg>
-            Resume
+            Download Resume
           </button>
         </div>
       </div>
