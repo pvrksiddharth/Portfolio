@@ -540,24 +540,24 @@ h1, h2, h3 {
 }
 
 /* ============================================================
-   Builds / experiments gallery
+   Domain Expertise
    ============================================================ */
 
-.builds-grid {
+.expertise-grid {
   margin-top: 3.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 
-.build-card {
+.domain-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  isolation: isolate;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow-sm);
+  padding: 1.9rem 1.9rem 1.7rem;
   overflow: hidden;
   transition:
     border-color 0.35s var(--ease-out),
@@ -565,220 +565,77 @@ h1, h2, h3 {
     box-shadow 0.35s var(--ease-out);
 }
 
-.build-card:hover {
+.domain-card:hover {
   border-color: var(--border-strong);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
-.build-preview {
-  aspect-ratio: 16 / 8.5;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-  background: var(--surface);
+/* subtle blueprint grid texture inside the card */
+.domain-blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(30, 58, 138, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 138, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 85% 0%, black, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at 85% 0%, black, transparent 78%);
+  transition: opacity 0.35s;
 }
 
-.build-body {
-  padding: 1.5rem 1.6rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  flex: 1;
+.domain-card:hover .domain-blueprint {
+  filter: brightness(0.85) contrast(1.15);
 }
 
-.build-meta {
+.domain-icon {
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.status-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.22rem 0.6rem;
+  justify-content: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.35rem;
+  transition: border-color 0.3s;
 }
 
-.status-chip .pip {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
+.domain-card:hover .domain-icon {
+  border-color: rgba(30, 58, 138, 0.35);
 }
 
-.status-chip.live { color: var(--accent); border-color: rgba(30, 58, 138, 0.3); }
-.status-chip.wip { color: #92600a; border-color: rgba(146, 96, 10, 0.3); }
-
-.build-name {
-  font-size: 1.28rem;
+.domain-name {
+  font-size: 1.22rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
 }
 
-.build-desc {
-  color: var(--text-muted);
-  font-size: 0.94rem;
-  max-width: 52ch;
-  flex: 1;
-}
-
-.build-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.35rem;
-}
-
-.tag {
+.domain-keywords {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--text-faint);
-  border: 1px solid var(--border);
-  padding: 0.24rem 0.6rem;
-  border-radius: 6px;
-  transition: color 0.25s, border-color 0.25s;
+  margin-bottom: 0.9rem;
 }
 
-.build-card:hover .tag {
+.domain-desc {
   color: var(--text-muted);
-}
-
-.build-links {
-  display: flex;
-  gap: 1.1rem;
-  margin-top: 0.9rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--border);
-}
-
-.build-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.84rem;
-  color: var(--text-muted);
-  transition: color 0.2s;
-}
-
-.build-link:hover {
-  color: var(--accent);
-}
-
-.build-link svg {
-  transition: transform 0.25s var(--ease-out);
-}
-
-.build-link:hover svg {
-  transform: translate(2px, -2px);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  font-weight: 300;
 }
 
 @media (max-width: 760px) {
-  .builds-grid { grid-template-columns: 1fr; }
-  .build-preview { aspect-ratio: 16 / 9; }
+  .expertise-grid { grid-template-columns: 1fr; }
+  .domain-card { padding: 1.6rem 1.4rem 1.45rem; }
 }
-
-/* CSS preview compositions (no stock imagery) */
-.preview-code {
-  position: absolute;
-  inset: 0;
-  padding: 1.1rem 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  line-height: 1.9;
-  color: rgba(17, 24, 39, 0.4);
-  white-space: pre;
-  overflow: hidden;
-  mask-image: linear-gradient(to bottom, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
-}
-
-.preview-code .k { color: rgba(30, 58, 138, 0.7); }
-.preview-code .s { color: rgba(17, 24, 39, 0.55); }
-.preview-code .n { color: rgba(146, 96, 10, 0.65); }
-
-.preview-blueprint {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(17, 24, 39, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 24, 39, 0.05) 1px, transparent 1px);
-  background-size: 34px 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-blueprint .node-graph {
-  width: 72%;
-  height: 78%;
-  overflow: visible;
-}
-
-.preview-ui {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(ellipse at 50% 120%, rgba(30, 58, 138, 0.05), transparent 60%);
-}
-
-.preview-ui .mini-window {
-  width: 76%;
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  background: var(--surface-2);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.5s var(--ease-out);
-}
-
-.build-card:hover .preview-ui .mini-window {
-  transform: translateY(-4px);
-}
-
-.mini-window-bar {
-  display: flex;
-  gap: 5px;
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--border);
-}
-
-.mini-window-bar i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(17, 24, 39, 0.14);
-}
-
-.mini-window-body {
-  padding: 12px;
-  display: grid;
-  gap: 8px;
-}
-
-.mini-row {
-  height: 8px;
-  border-radius: 3px;
-  background: rgba(17, 24, 39, 0.07);
-}
-
-.mini-row.accent { background: rgba(30, 58, 138, 0.3); width: 42%; }
-.mini-row.short { width: 68%; }
-.mini-row.mid { width: 84%; }
 
 /* ============================================================
    Playground

@@ -1,15 +1,15 @@
-const principles = [
+const focusAreas = [
   {
-    title: 'Understand first',
-    body: 'Most problems are mislabelled. Reading a problem carefully is half of solving it.',
+    title: 'Technical ↔ commercial bridge',
+    body: 'Turning solution architecture and scope documents into proposals that procurement committees can actually evaluate.',
   },
   {
-    title: 'Build small, then grow',
-    body: 'A working sketch beats a perfect plan. Ship the smallest honest version and iterate.',
+    title: 'Bid coordination end-to-end',
+    body: 'Owning the tender calendar — compliance checklists, documentation, pricing inputs, and on-time submission across Gov/PSU portals.',
   },
   {
-    title: 'Details compound',
-    body: 'Spacing, timing, and wording — the quiet decisions are what make software feel considered.',
+    title: 'AI-assisted research & drafting',
+    body: 'Using ChatGPT, Claude, and Gemini for proposal refinement, requirement analysis, and faster, better-structured first drafts.',
   },
 ];
 
@@ -19,26 +19,32 @@ export default function AboutSection() {
       <div className="container">
         <p className="section-label reveal">About</p>
         <h2 className="section-title reveal" id="about-heading">
-          The person behind the particles.
+          Between the solution and the signature.
         </h2>
 
         <div className="about-layout">
           <div className="about-copy reveal">
             <p>
-              I like taking things apart to see how they work — protocols, interfaces,
-              arguments for why something is built the way it is. This site is where that
-              habit lives publicly: <strong>a workshop, not a showcase reel.</strong>
+              I am Siddharth Pendyala — a pre-sales and bid-management professional with{' '}
+              <strong>2.9+ years of experience</strong> across Government, PSU, and enterprise
+              technology tenders, holding a <strong>B.Tech in Electronics &amp; Communication
+              Engineering</strong>.
             </p>
             <p>
-              My interest sits where <strong>software meets intelligence meets design</strong> —
-              systems that reason about information, wrapped in interfaces that respect the
-              person using them. I learn by building, refine by questioning, and keep a short
-              list of things worth doing well.
+              My day-to-day sits in one specific gap: <strong>bridging technical solutions and
+              commercial success.</strong> Engineers describe what a system does; buyers decide
+              whether it is worth signing. I work on the translation — scope, compliance,
+              positioning, and the discipline of never missing a deadline.
+            </p>
+            <p>
+              I lean on modern AI tools — <strong>ChatGPT, Claude, and Gemini</strong> — for
+              proposal refinement, requirement research, and drafting, treating them as careful
+              first-draft partners rather than shortcuts.
             </p>
           </div>
 
           <div className="principles">
-            {principles.map((p, i) => (
+            {focusAreas.map((p, i) => (
               <div className="principle reveal" key={p.title} style={{ ['--reveal-delay' as string]: `${i * 90}ms` }}>
                 <span className="idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <div>
