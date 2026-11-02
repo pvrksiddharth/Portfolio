@@ -1,7 +1,7 @@
 # Siddharth Pendyala — Portfolio
 
 A bespoke, dark, interactive single-page portfolio built with React + Vite + TypeScript.
-No UI libraries — the nano-particle background and playground field are hand-written Canvas 2D.
+The nano-particle background is hand-written Canvas 2D; charts use Recharts.
 
 ## Run locally
 

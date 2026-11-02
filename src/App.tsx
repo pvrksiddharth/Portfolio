@@ -3,7 +3,7 @@ import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import DomainExpertiseSection from './components/DomainExpertiseSection';
-import PlaygroundSection from './components/PlaygroundSection';
+import AnalyticsSection from './components/AnalyticsSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -25,7 +25,7 @@ export default function App() {
         <main>
           <HeroSection onResumeClick={openResume} />
           <DomainExpertiseSection />
-          <PlaygroundSection />
+          <AnalyticsSection />
           <AboutSection />
           <ContactSection onResumeClick={openResume} />
         </main>
