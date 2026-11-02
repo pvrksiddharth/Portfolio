@@ -107,7 +107,7 @@ export default function PlaygroundField() {
           const distSq = dx * dx + dy * dy;
           if (distSq < LINK_DIST * LINK_DIST) {
             const alpha = (1 - Math.sqrt(distSq) / LINK_DIST) * 0.28;
-            ctx.strokeStyle = `rgba(148, 190, 220, ${alpha})`;
+            ctx.strokeStyle = `rgba(30, 58, 138, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
@@ -124,8 +124,8 @@ export default function PlaygroundField() {
         ctx.beginPath();
         ctx.arc(d.x, d.y, 1.1 + near * 1.4, 0, TAU);
         ctx.fillStyle = near > 0.4
-          ? `rgba(62, 214, 232, ${0.35 + near * 0.55})`
-          : `rgba(226, 232, 240, ${0.25 + near * 0.3})`;
+          ? `rgba(30, 58, 138, ${0.35 + near * 0.55})`
+          : `rgba(17, 24, 39, ${0.25 + near * 0.3})`;
         ctx.fill();
       }
 
@@ -153,7 +153,7 @@ export default function PlaygroundField() {
           const distSq = dx * dx + dy * dy;
           if (distSq < LINK_DIST * LINK_DIST) {
             const alpha = (1 - Math.sqrt(distSq) / LINK_DIST) * 0.28;
-            ctx.strokeStyle = `rgba(148, 190, 220, ${alpha})`;
+            ctx.strokeStyle = `rgba(30, 58, 138, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
@@ -164,7 +164,7 @@ export default function PlaygroundField() {
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, 1.2, 0, TAU);
-        ctx.fillStyle = 'rgba(226, 232, 240, 0.3)';
+        ctx.fillStyle = 'rgba(17, 24, 39, 0.3)';
         ctx.fill();
       }
     } else {

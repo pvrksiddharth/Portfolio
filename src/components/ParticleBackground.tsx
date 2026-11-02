@@ -4,13 +4,15 @@ import { useEffect, useRef } from 'react';
  * ParticleBackground
  * ------------------
  * A single persistent, full-viewport canvas layer rendered behind all content.
- * - Tiny drifting nano-particles with organic noise-based motion.
- * - Pointer interaction: local displacement (repulsion ripple), brief scale +
- *   brightness boost, gradual spring return to home positions.
+ * Light-theme "graphite dust": tiny, very-low-opacity dark/grey particles that
+ * read as a subtle texture rather than a visual effect.
+ * - Organic noise-based drift.
+ * - Gentle pointer interaction: soft local displacement, slight scale +
+ *   brightness lift, gradual spring return to home positions.
  * - No React state per frame; everything lives in refs and the rAF loop.
  * - Handles DPR scaling, resize, visibility, touch devices, reduced motion,
  *   and cleans up every listener/frame on unmount.
- * - Falls back gracefully (static CSS dot texture) if Canvas 2D is missing.
+ * - Falls back gracefully if Canvas 2D is missing (plain light background).
  */
 
 interface Particle {
@@ -21,7 +23,8 @@ interface Particle {
   alpha: number;               // base alpha
   phase: number;               // drift phase seed
   speed: number;               // drift speed factor
-  glow: boolean;               // faint accent glow on a few particles
+  tone: 'dark' | 'grey';       // near-black vs. mid-grey graphite tone
+  accent: boolean;             // rare faint navy particle
 }
 
 const TAU = Math.PI * 2;
@@ -56,9 +59,11 @@ export default function ParticleBackground() {
 
     const buildParticles = () => {
       const area = width * height;
-      // Density tuned for "nano field": ~1 particle per 8k px², capped for perf.
-      const maxCount = reduceMotion ? 60 : coarsePointer ? 130 : 240;
-      const count = Math.max(50, Math.min(Math.round(area / 8200), maxCount));
+      // Fine "graphite dust" texture: slightly denser field than before, but
+      // every particle sits at very low alpha (0.05–0.15). Capped for perf;
+      // reduced further on coarse-pointer (mobile) devices.
+      const maxCount = reduceMotion ? 90 : coarsePointer ? 150 : 340;
+      const count = Math.max(60, Math.min(Math.round(area / 6200), maxCount));
       particles = [];
       for (let i = 0; i < count; i++) {
         const hx = rand(0, width);
@@ -70,11 +75,12 @@ export default function ParticleBackground() {
           hy,
           vx: 0,
           vy: 0,
-          size: rand(0.5, 1.7),
-          alpha: rand(0.08, 0.4),
+          size: rand(0.4, 1.3),
+          alpha: rand(0.05, 0.15),
           phase: rand(0, TAU),
-          speed: rand(0.25, 1),
-          glow: Math.random() < 0.06,
+          speed: rand(0.2, 0.8),
+          tone: Math.random() < 0.3 ? 'dark' : 'grey',
+          accent: Math.random() < 0.04, // a few faint navy particles
         });
       }
     };
@@ -114,8 +120,9 @@ export default function ParticleBackground() {
       pointer.active = false;
     };
 
-    const REPEL_RADIUS = 130;
-    const REPEL_STRENGTH = 34;
+    // Very gentle interaction: soft local displacement, no violence.
+    const REPEL_RADIUS = 150;
+    const REPEL_STRENGTH = 12;
 
     let t = 0;
 
@@ -146,7 +153,7 @@ export default function ParticleBackground() {
             const falloff = 1 - dist / REPEL_RADIUS; // 0..1
             const push = falloff * falloff * REPEL_STRENGTH;
             p.vx += (dx / dist) * push * 0.06;
-            p.vy += (dy / dist) * push * 0.06 - falloff * 0.12; // slight upward rise
+            p.vy += (dy / dist) * push * 0.06 - falloff * 0.04; // slight upward rise
           }
         }
 
@@ -158,10 +165,10 @@ export default function ParticleBackground() {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Interaction response: proximity brightens & scales briefly.
+        // Interaction response: proximity gently brightens & scales.
         let drawAlpha = p.alpha;
         let drawSize = p.size;
-        let accent = p.glow;
+        let accent = p.accent;
 
         if (interacting) {
           const dx = p.x - pointer.x;
@@ -169,9 +176,9 @@ export default function ParticleBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < REPEL_RADIUS) {
             const near = 1 - dist / REPEL_RADIUS;
-            drawAlpha = Math.min(0.85, p.alpha + near * 0.5);
-            drawSize = p.size * (1 + near * 0.9);
-            if (near > 0.35) accent = true;
+            drawAlpha = Math.min(0.35, p.alpha + near * 0.2); // stays subtle
+            drawSize = p.size * (1 + near * 0.6);
+            if (near > 0.55) accent = true;
           }
         }
 
@@ -183,17 +190,17 @@ export default function ParticleBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, drawSize, 0, TAU);
+        // Light-theme palette: near-black / mid-grey graphite dust,
+        // with rare faint navy (accent) particles. No glow/shadow effects.
         if (accent) {
-          ctx.fillStyle = `rgba(62, 214, 232, ${drawAlpha})`;
-          ctx.shadowColor = 'rgba(62, 214, 232, 0.55)';
-          ctx.shadowBlur = drawSize * 6;
+          ctx.fillStyle = `rgba(30, 58, 138, ${drawAlpha})`;
+        } else if (p.tone === 'dark') {
+          ctx.fillStyle = `rgba(17, 24, 39, ${drawAlpha})`;
         } else {
-          ctx.fillStyle = `rgba(226, 232, 240, ${drawAlpha})`;
-          ctx.shadowBlur = 0;
+          ctx.fillStyle = `rgba(107, 114, 128, ${drawAlpha})`;
         }
         ctx.fill();
       }
-      ctx.shadowBlur = 0;
 
       if (running) rafId = requestAnimationFrame(step);
     };
@@ -204,9 +211,11 @@ export default function ParticleBackground() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.hx, p.hy, p.size, 0, TAU);
-        ctx.fillStyle = p.glow
-          ? `rgba(62, 214, 232, ${p.alpha})`
-          : `rgba(226, 232, 240, ${p.alpha})`;
+        ctx.fillStyle = p.accent
+          ? `rgba(30, 58, 138, ${p.alpha})`
+          : p.tone === 'dark'
+            ? `rgba(17, 24, 39, ${p.alpha})`
+            : `rgba(107, 114, 128, ${p.alpha})`;
         ctx.fill();
       }
     };

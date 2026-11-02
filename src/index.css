@@ -1,20 +1,23 @@
 /* ============================================================
    Design system — Siddharth Pendyala / personal digital space
-   Dark, minimal, technology-inspired. One accent (electric cyan).
+   Light, minimal, premium. One accent (deep navy).
    ============================================================ */
 
 :root {
-  --bg: #08090c;
-  --surface: #101218;
-  --surface-2: #14171f;
-  --text: #f1f3f5;
-  --text-muted: #9aa3ad;
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f3f4f6;
+  --text: #111827;
+  --text-muted: #4b5563;
   --text-faint: #6b7280;
-  --accent: #3ed6e8;
-  --accent-soft: rgba(62, 214, 232, 0.12);
-  --accent-glow: rgba(62, 214, 232, 0.35);
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.13);
+  --accent: #1e3a8a;
+  --accent-soft: rgba(30, 58, 138, 0.07);
+  --accent-hover: #1d4ed8;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.05);
+  --shadow-md: 0 12px 32px -14px rgba(17, 24, 39, 0.12);
+  --shadow-lg: 0 32px 70px -32px rgba(17, 24, 39, 0.18);
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --nav-h: 64px;
@@ -46,8 +49,8 @@ body {
 }
 
 ::selection {
-  background: rgba(62, 214, 232, 0.25);
-  color: #fff;
+  background: rgba(30, 58, 138, 0.14);
+  color: var(--text);
 }
 
 :focus-visible {
@@ -198,24 +201,27 @@ h1, h2, h3 {
 
 .btn-primary {
   background: var(--accent);
-  color: #04141a;
+  color: #ffffff;
   font-weight: 600;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px -8px var(--accent-glow);
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
 .btn-ghost {
   border-color: var(--border-strong);
   color: var(--text-muted);
+  background: var(--surface);
 }
 
 .btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: #9ca3af;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-2);
   transform: translateY(-1px);
 }
 
@@ -259,7 +265,7 @@ h1, h2, h3 {
 }
 
 .navbar.scrolled {
-  background: rgba(8, 9, 12, 0.72);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--border);
@@ -343,7 +349,7 @@ h1, h2, h3 {
 
 .menu-toggle:hover {
   color: var(--text);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: #9ca3af;
 }
 
 .mobile-menu {
@@ -352,9 +358,10 @@ h1, h2, h3 {
   left: 0;
   right: 0;
   z-index: 49;
-  background: rgba(10, 11, 15, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-md);
   border-bottom: 1px solid var(--border);
   padding: 0.75rem clamp(1.25rem, 5vw, 2rem) 1.5rem;
   display: none;
@@ -422,7 +429,6 @@ h1, h2, h3 {
   height: 5px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px var(--accent-glow);
   animation: breathe 3.2s ease-in-out infinite;
 }
 
@@ -550,7 +556,8 @@ h1, h2, h3 {
   flex-direction: column;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0));
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   transition:
     border-color 0.35s var(--ease-out),
@@ -561,7 +568,7 @@ h1, h2, h3 {
 .build-card:hover {
   border-color: var(--border-strong);
   transform: translateY(-3px);
-  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  box-shadow: var(--shadow-lg);
 }
 
 .build-preview {
@@ -611,8 +618,8 @@ h1, h2, h3 {
   background: currentColor;
 }
 
-.status-chip.live { color: var(--accent); border-color: rgba(62, 214, 232, 0.3); }
-.status-chip.wip { color: #d8b36a; border-color: rgba(216, 179, 106, 0.25); }
+.status-chip.live { color: var(--accent); border-color: rgba(30, 58, 138, 0.3); }
+.status-chip.wip { color: #92600a; border-color: rgba(146, 96, 10, 0.3); }
 
 .build-name {
   font-size: 1.28rem;
@@ -691,23 +698,23 @@ h1, h2, h3 {
   font-family: var(--font-mono);
   font-size: 0.66rem;
   line-height: 1.9;
-  color: rgba(241, 243, 245, 0.35);
+  color: rgba(17, 24, 39, 0.4);
   white-space: pre;
   overflow: hidden;
   mask-image: linear-gradient(to bottom, black 60%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
 }
 
-.preview-code .k { color: rgba(62, 214, 232, 0.65); }
-.preview-code .s { color: rgba(241, 243, 245, 0.55); }
-.preview-code .n { color: rgba(216, 179, 106, 0.6); }
+.preview-code .k { color: rgba(30, 58, 138, 0.7); }
+.preview-code .s { color: rgba(17, 24, 39, 0.55); }
+.preview-code .n { color: rgba(146, 96, 10, 0.65); }
 
 .preview-blueprint {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(17, 24, 39, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 24, 39, 0.05) 1px, transparent 1px);
   background-size: 34px 34px;
   display: flex;
   align-items: center;
@@ -726,7 +733,7 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at 50% 120%, rgba(62, 214, 232, 0.06), transparent 60%);
+  background: radial-gradient(ellipse at 50% 120%, rgba(30, 58, 138, 0.05), transparent 60%);
 }
 
 .preview-ui .mini-window {
@@ -735,7 +742,7 @@ h1, h2, h3 {
   border-radius: 8px;
   background: var(--surface-2);
   overflow: hidden;
-  box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.9);
+  box-shadow: var(--shadow-md);
   transition: transform 0.5s var(--ease-out);
 }
 
@@ -754,7 +761,7 @@ h1, h2, h3 {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(17, 24, 39, 0.14);
 }
 
 .mini-window-body {
@@ -766,10 +773,10 @@ h1, h2, h3 {
 .mini-row {
   height: 8px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(17, 24, 39, 0.07);
 }
 
-.mini-row.accent { background: rgba(62, 214, 232, 0.35); width: 42%; }
+.mini-row.accent { background: rgba(30, 58, 138, 0.3); width: 42%; }
 .mini-row.short { width: 68%; }
 .mini-row.mid { width: 84%; }
 
@@ -781,7 +788,8 @@ h1, h2, h3 {
   margin-top: 3rem;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(16, 18, 24, 0.55);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   position: relative;
 }
@@ -851,13 +859,14 @@ h1, h2, h3 {
   padding: 1.15rem 1.25rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.012);
-  transition: border-color 0.3s, background 0.3s;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
 .principle:hover {
   border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--surface-2);
 }
 
 .principle .idx {
@@ -920,13 +929,16 @@ h1, h2, h3 {
   border-radius: 12px;
   font-size: 0.92rem;
   color: var(--text-muted);
-  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s var(--ease-out);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s var(--ease-out), box-shadow 0.25s;
 }
 
 .contact-pill:hover {
   color: var(--text);
-  border-color: rgba(62, 214, 232, 0.45);
+  border-color: rgba(30, 58, 138, 0.4);
   background: var(--accent-soft);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
@@ -968,7 +980,7 @@ h1, h2, h3 {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(4, 5, 7, 0.7);
+  background: rgba(17, 24, 39, 0.45);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -986,14 +998,14 @@ h1, h2, h3 {
 .dialog {
   width: min(440px, 100%);
   background: var(--surface);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 2rem 2rem 1.75rem;
   position: relative;
   transform: translateY(12px) scale(0.98);
   opacity: 0;
   animation: dialogIn 0.32s var(--ease-out) forwards;
-  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
+  box-shadow: var(--shadow-lg);
 }
 
 @keyframes dialogIn {
@@ -1004,7 +1016,7 @@ h1, h2, h3 {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid rgba(62, 214, 232, 0.3);
+  border: 1px solid rgba(30, 58, 138, 0.25);
   background: var(--accent-soft);
   display: flex;
   align-items: center;
@@ -1051,7 +1063,7 @@ h1, h2, h3 {
 
 .dialog-close:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--surface-2);
 }
 
 @media (prefers-reduced-motion: reduce) {

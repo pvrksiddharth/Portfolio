@@ -37,14 +37,14 @@ function GraphPreview() {
             key={i}
             x1={nodes[a][0]} y1={nodes[a][1]}
             x2={nodes[b][0]} y2={nodes[b][1]}
-            stroke="rgba(255,255,255,0.16)" strokeWidth="0.4"
+            stroke="rgba(17,24,39,0.2)" strokeWidth="0.4"
           />
         ))}
         {nodes.map(([x, y], i) => (
           <circle
             key={i}
             cx={x} cy={y} r={i === 6 ? 2.4 : 1.6}
-            fill={i === 6 ? '#3ed6e8' : 'rgba(241,243,245,0.5)'}
+            fill={i === 6 ? '#1e3a8a' : 'rgba(17,24,39,0.45)'}
             opacity={i === 6 ? 0.9 : 0.7}
           />
         ))}
