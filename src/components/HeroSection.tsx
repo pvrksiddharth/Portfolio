@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
-import { RESUME_PATH } from '../data/site';
+import ResumeDownloadButton from './ResumeDownloadButton';
 
-interface HeroProps {
-  onResumeClick: () => void;
-}
-
-export default function HeroSection({ onResumeClick }: HeroProps) {
+export default function HeroSection() {
   const [scrolledPast, setScrolledPast] = useState(false);
 
   useEffect(() => {
@@ -40,9 +36,7 @@ export default function HeroSection({ onResumeClick }: HeroProps) {
             <polyline points="19 12 12 19 5 12" />
           </svg>
         </a>
-        <a className="btn btn-ghost" href={RESUME_PATH} download onClick={onResumeClick}>
-          Download Resume
-        </a>
+        <ResumeDownloadButton />
       </div>
 
       <div className={`scroll-hint${scrolledPast ? ' hidden' : ''}`} aria-hidden="true">
