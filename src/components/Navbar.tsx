@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
-import { navLinks } from '../data/site';
+import { navLinks, RESUME_PATH } from '../data/site';
 
-interface NavbarProps {
-  onResumeClick: () => void;
-}
-
-export default function Navbar({ onResumeClick }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -67,10 +63,11 @@ export default function Navbar({ onResumeClick }: NavbarProps) {
           </ul>
 
           <div className="nav-actions">
-            <button
-              type="button"
+            <a
+              href={RESUME_PATH}
+              download
               className="btn btn-ghost btn-sm"
-              onClick={onResumeClick}
+              aria-label="Download resume (PDF)"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -79,7 +76,7 @@ export default function Navbar({ onResumeClick }: NavbarProps) {
                 <polyline points="9 15 12 18 15 15" />
               </svg>
               <span className="nav-resume-label">Resume</span>
-            </button>
+            </a>
             <button
               type="button"
               className="menu-toggle"

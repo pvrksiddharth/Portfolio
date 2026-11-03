@@ -1130,100 +1130,256 @@ body.drawer-open {
 }
 
 /* ============================================================
-   Resume dialog
+   Thematic Parallax Background Icons Layer
    ============================================================ */
 
-.dialog-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(17, 24, 39, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  opacity: 0;
-  animation: overlayIn 0.25s var(--ease-out) forwards;
+.background-icons-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes overlayIn {
-  to { opacity: 1; }
+.parallax-icon-wrapper {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
 }
 
-.dialog {
-  width: min(440px, 100%);
+.parallax-icon-float {
+  display: block;
+  opacity: 0.04; /* Ultra-low opacity (0.03 to 0.05) */
+  color: #0f172a;
+}
+
+.parallax-svg {
+  display: block;
+  max-width: none;
+}
+
+/* Very slow, subtle CSS floating/rotating animations */
+@keyframes bgFloat1 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(14px, -18px, 0) rotate(2.5deg); }
+  100% { transform: translate3d(-10px, 12px, 0) rotate(-1.5deg); }
+}
+
+@keyframes bgFloat2 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-16px, 20px, 0) rotate(-3deg); }
+  100% { transform: translate3d(12px, -14px, 0) rotate(2deg); }
+}
+
+@keyframes bgFloat3 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(18px, 15px, 0) rotate(2deg); }
+  100% { transform: translate3d(-14px, -20px, 0) rotate(-2.5deg); }
+}
+
+@keyframes bgFloat4 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-14px, -18px, 0) rotate(-2deg); }
+  100% { transform: translate3d(16px, 16px, 0) rotate(3deg); }
+}
+
+@keyframes bgFloat5 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(12px, -16px, 0) rotate(2.5deg); }
+  100% { transform: translate3d(-15px, 14px, 0) rotate(-2deg); }
+}
+
+.bg-float-1 { animation: bgFloat1 22s ease-in-out infinite alternate; }
+.bg-float-2 { animation: bgFloat2 26s ease-in-out infinite alternate; }
+.bg-float-3 { animation: bgFloat3 24s ease-in-out infinite alternate; }
+.bg-float-4 { animation: bgFloat4 28s ease-in-out infinite alternate; }
+.bg-float-5 { animation: bgFloat5 25s ease-in-out infinite alternate; }
+
+/* ============================================================
+   Resume Download Micro-interaction Card
+   ============================================================ */
+
+.resume-micro-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 174px;
+  height: 44px;
+  z-index: 20;
+}
+
+.resume-micro-wrapper.variant-pill {
+  width: 184px;
+  height: 46px;
+}
+
+.resume-micro-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 174px;
+  height: 44px;
+  border-radius: 999px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 2rem 2rem 1.75rem;
-  position: relative;
-  transform: translateY(12px) scale(0.98);
-  opacity: 0;
-  animation: dialogIn 0.32s var(--ease-out) forwards;
-  box-shadow: var(--shadow-lg);
-}
-
-@keyframes dialogIn {
-  to { transform: none; opacity: 1; }
-}
-
-.dialog-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1px solid rgba(30, 58, 138, 0.25);
-  background: var(--accent-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-}
-
-.dialog h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.6rem;
-}
-
-.dialog p {
-  color: var(--text-muted);
-  font-size: 0.94rem;
-  font-weight: 300;
-}
-
-.dialog-actions {
-  margin-top: 1.75rem;
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: top left;
+  transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background 0.3s ease;
 }
 
-.dialog-actions .btn {
+.resume-micro-wrapper.variant-pill .resume-micro-card {
+  width: 184px;
+  height: 46px;
+}
+
+.resume-micro-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-micro-card.is-expanded {
+  width: clamp(285px, 90vw, 340px);
+  height: 142px;
+  border-radius: 16px;
+  border-color: rgba(30, 58, 138, 0.22);
+  box-shadow: 0 20px 45px -12px rgba(17, 24, 39, 0.16), 0 0 0 1px rgba(30, 58, 138, 0.08);
+  padding: 1.15rem 1.25rem;
+  justify-content: space-between;
+  align-items: stretch;
+  cursor: default;
+}
+
+.resume-micro-message {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.36s ease;
+}
+
+.resume-micro-card.is-expanded .resume-micro-message {
+  opacity: 1;
+  max-height: 72px;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 0.35s ease 0.08s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, max-height 0.38s ease;
+}
+
+.resume-micro-message p {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  font-weight: 400;
+  text-align: left;
+  margin: 0;
+}
+
+.resume-micro-trigger {
   width: 100%;
-}
-
-.dialog-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-faint);
-  transition: color 0.2s, background 0.2s;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
 }
 
-.dialog-close:hover {
-  color: var(--text);
+.resume-micro-card.is-expanded .resume-micro-trigger {
+  height: 40px;
+  border-radius: 10px;
   background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.86rem;
+}
+
+.resume-micro-card.is-expanded .resume-micro-trigger:hover {
+  background: var(--accent-soft);
+  border-color: rgba(30, 58, 138, 0.3);
+  color: var(--accent);
+}
+
+.resume-micro-card.is-expanded .resume-micro-trigger:active {
+  transform: scale(0.98);
+}
+
+.resume-micro-trigger.is-success,
+.resume-micro-card.is-expanded .resume-micro-trigger.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #059669;
+}
+
+.resume-micro-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-check-animated {
+  animation: checkPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.icon-check-animated polyline {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: checkDraw 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.05s;
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.4); opacity: 0; }
+  70% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes checkDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 640px) {
+  .resume-micro-card.is-expanded {
+    width: min(320px, calc(100vw - 3rem));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dialog-overlay,
-  .dialog { animation: none; opacity: 1; transform: none; }
+  .parallax-icon-float {
+    animation: none !important;
+  }
+  .resume-micro-card {
+    transition: none !important;
+  }
+  .icon-check-animated {
+    animation: none !important;
+  }
+  .icon-check-animated polyline {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
